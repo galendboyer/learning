@@ -1,0 +1,6 @@
+Micropartitions
+Time-Travel
+Cloning
+Semi Structured Data
+Data Governance:
+   Dynamic Data Masking

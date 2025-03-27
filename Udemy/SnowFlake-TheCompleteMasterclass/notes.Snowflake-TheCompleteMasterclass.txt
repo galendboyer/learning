@@ -1,0 +1,119 @@
+All Resources of the presentation.
+https://drive.google.com/drive/folders/1hjfEJ0oFoBrWkN1jXw9pIB1NT20ECFi3
+
+My Snowflake Account
+https://uvabxvh-mlb44940.snowflakecomputing.com
+https://sfzbgqk-deb09838.snowflakecomputing.com:galenboyerwebsites/300
+
+3 Layers of Snowflake
+Blob Columnar Storage
+Compute Engine, MPP
+Cloud Services
+
+
+
+SELECT * FROM CUSTOMER;
+SELECT * FROM SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.ORDERS;
+
+
+CREATE OR REPLACE WAREHOUSE SECOND_WAREHOUSE 
+WITH
+WAREHOUSE_SIZE = XSMALL
+MIN_CLUSTER_COUNT = 1
+MAX_CLUSTER_COUNT = 3
+AUTO_SUSPEND = 60
+AUTO_RESUME = TRUE
+SCALING_POLICY = 'Economy'
+INITIALLY_SUSPENDED = TRUE
+COMMENT = 'This is our 2nd warehouse'
+;
+
+
+ALTER WAREHOUSE SECOND_WAREHOUSE RESUME;
+ALTER WAREHOUSE SECOND_WAREHOUSE SUSPEND;
+ALTER WAREHOUSE SECOND_WAREHOUSE SET WAREHOUSE_SIZE = 'SMALL';
+ALTER WAREHOUSE SECOND_WAREHOUSE SET AUTO_SUSPEND = 30;
+
+DROP WAREHOUSE SECOND_WAREHOUSE;
+
+
+CREATE DATABASE FIRST_DB;
+
+create table first_table (
+   first_column INT,
+    second_column TEXT
+    -- supported types: https://docs.snowflake.com/en/sql-reference/intro-summary-data-types
+    )
+;
+
+
+
+ALTER DATABASE FIRST_DATABASE RENAME TO OUR_FIRST_DB;
+
+COSTS:
+
+Compute:
+Measured in Credits.
+Varies based on provider and location within the provider.
+Standard, Enterprise, Business, VPD.
+
+Storage:
+    Capacity or OnDemand
+
+Data Transfer:
+    No charge on Ingress
+    Charged on Egress.  Different region or different Cloud provider.
+
+Consumption Usage:
+    By Usage Type: Compute/Database/Storage
+    By Service Type: 
+    By Resource Type: The warehouses
+    By Tags:
+
+
+Resource Monitoring:
+Monitor Credit Usage for Account or Warehouse or Group of Warehouses
+Credit Quota
+
+Actions:
+Notify
+Notify and Suspend for new only.
+Notify and Suspend all.
+
+
+SNOWPIPE:
+Create Stage
+Create Copy Command
+Create Pipe
+S3 Notification
+
+
+
+CREATE OR REPLACE TABLE OUR_FIRST_DB.PUBLIC.ORDERS_EX (
+    ORDER_ID VARCHAR(30),
+    AMOUNT INT,
+    PROFIT INT,
+    PROFITABLE_FLAG BOOLEAN
+    );
+
+COPY INTO OUR_FIRST_DB.PUBLIC.ORDERS_EX
+    FROM (select 
+            s.$1,
+            s.$2, 
+            s.$3,
+            CASE WHEN CAST(s.$3 as int) < 0 THEN FALSE ELSE TRUE END 
+          from @MANAGE_DB.external_stages.aws_stage s)
+    file_format= (type = csv field_delimiter=',' skip_header=1)
+    files=('OrderDetails.csv');
+
+?Why do queries get queued?
+
+?Why can't database vendors focus on views defined with COPY OPTIONS?
+
+?I didn't quite understand the '@' usage in prefixing object names?
+
+?GIT_REPOSITORIES within Snowflake?
+
+?Schemas can have type of table for CREATE TABLE PERMANENT/TRANSIENT/TEMPORARY?
+
+?What happens to later storage when time traveling?

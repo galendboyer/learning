@@ -1,0 +1,3 @@
+-- https://lnkd.in/g_-_9ymd
+-- https://www.youtube.com/watch?v=TgKmfAV2pw8&list=PLBTZqjSKn0IfuIqbMIqzS-waofsPHMS0E&index=9
+-- https://datalemur.com/questions/photoshop-revenue-analysis

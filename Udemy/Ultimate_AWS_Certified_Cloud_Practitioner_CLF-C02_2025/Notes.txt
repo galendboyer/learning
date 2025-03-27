@@ -1,0 +1,23 @@
+https://aws.amazon.com/
+
+Section 3:
+#8
+   Problems solved by the cloud:
+   Flexibility, Cost-effectiveness, Scalability, Elasticity, High-availability and fault tolerance, Agility
+
+#9 Types of Cloud Computing:
+IaaS -> Infrastructure as a Service
+PaaS -> Platform as a Service
+SaaS -> Software as a Service
+
+3 Pricing fundamentals
+Pay for COMPUTE time
+Pay for data stored in the Cloud
+Pay for data retrieved out of the Cloud.
+
+https://aws.amazon.com/about-aws/global-infrastructure/regions_az/
+
+Section4. Chapter15 IAM Introduction
+Users, Groups and Policies
+Groups contain only users.  Users can be in multiple groups.
+

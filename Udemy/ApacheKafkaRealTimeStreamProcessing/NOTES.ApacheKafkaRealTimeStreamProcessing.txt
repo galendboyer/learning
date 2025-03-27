@@ -1,0 +1,19 @@
+pip install kafka-python
+
+Course based on Java 8 and Apache Kafka 2.2
+
+Source code is included
+
+Uses Maven, log4j, junit.
+
+He uses intellij
+
+The Github Repository
+https://github.com/LearningJournal/Kafka-Streams-Real-time-Stream-Processing
+
+Use Cases:
+Incremental ETL
+Real-time Reporting
+Real-time Alerting
+Real-time Decision Making and ML
+Online Machine Learning and AI.

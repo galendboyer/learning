@@ -1,0 +1,87 @@
+Instructor: Prashant Kumar Pandey
+#2) What is Big Data and How it Started
+
+Section1.3
+Hadoop Platform:
+YARN       -> Cluster Operating System (Yet Another Resource Negotiator)
+HDFS       -> Distributed Storage (Hadoop Distributed File System)
+Map/Reduce -> Distributed Compute
+
+Hive         (Database)
+Apache HBase (Database)
+Pig          (Scripting Language)
+Sqoop        (Data Ingestion)
+Oozie        (Workflow)
+
+YARN:
+RM -> Resource Manager
+NM -> Node Manager
+AM -> Application Manager
+
+HDFS:
+NN -> Name Node
+DN -> Data Node
+
+Map/Reduce.
+Programming Model
+Programming Framework
+
+Section1.4
+
+Section1.5
+Ecosystem:
+SparkCore APIs
+Set of Libraries, Packages, APIs
+
+Section2.6
+Section2.7
+Section2.8
+https://dbc-9a75d494-d7c2.cloud.databricks.com/?autoLogin=true&account_id=9cfc6aab-a862-4916-b23a-1338f0faa829&o=1062983298008812
+https://community.cloud.databricks.com/browse?o=41912367050129
+
+Section2.9
+Notebook is code file
+
+To work on Databricks you need
+1) Place to write your code
+2) A compute resource to execute code
+3) A cloud directory location to keep data.
+
+Section2.10
+
+Section2.11
+rundll32 sysdm.cpl,EditEnvironmentVariables
+
+setx HADOOP_HOME c:\Users\galen\BIN\hadoop\hadoop-3.3.6
+setx PATH        %PATH%;%HADOOP_HOME%\bin
+
+setx SPARK_HOME c:\Users\galen\BIN\spark\spark-3.5.4
+setx PATH       %PATH%;%SPARK_HOME%\bin
+
+setx PYTHONPATH     c:\Users\galen\BIN\spark\spark-3.5.4\python;c:\Users\galen\BIN\spark\spark-3.5.4\python\lib\py4j-0.10.9.7-src.zip
+setx PYSPARK_PYTHON c:\Users\galen\AppData\Local\Programs\Python\Python311\python
+
+setx JAVA_HOME C:\Program Files\OpenLogic\jre-11.0.25.9-hotspot
+
+Section2.11
+setx PATH %PATH%;"c:\Program Files\JetBrains\PyCharm Community Edition 2024.3.2\bin"
+
+Section3.15
+http://sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3
+Open Data Commons Public Domain Dedication and License (PDDL) 
+
+Section3.16 Introduction to Spark Data Frames
+
+Section3.17 Creating Spark Dataframe
+/databricks-datasets/learning-spark-v2/sf-fire/sf-fire-calls.csv
+
+Spark session objects is how you start.
+Spark session has either methods or attributes.
+In this example we are using the read attribute of the Spark Session object
+The read attribute gives you a reader object.
+All the other options are methods of the dataframe reader.
+This code is using the object oriented builder pattern.
+
+Section3.18 Creating Spark Tables.
+
+Section3.20 Working with Spark SQL

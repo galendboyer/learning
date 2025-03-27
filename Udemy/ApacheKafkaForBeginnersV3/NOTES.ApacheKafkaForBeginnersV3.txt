@@ -1,0 +1,39 @@
+Stephane Maarek
+
+8) Producers and Message Keys
+   If the key IS NOT NULL, then you would not send a partition, correct?
+   If the key IS NOT NULL, then would you send an offset?
+
+   Basically, the producer knows the partition but how does the producer know the next offset?
+
+   Do the consumers keep track of the Partition/offsets that they have already consumed?
+   
+murmur2 algorithm
+
+Serializer/Deserializer Types:
+   String(incl JSON)
+   Int, Float
+   Avro
+   Protobuf
+   
+
+http://www.conduktor.io/get-started
+
+https://learn.conduktor.io/kafka/
+https://learn.conduktor.io/kafka/how-to-install-apache-kafka-on-windows
+
+I executed the following:
+
+    wget https://archive.apache.org/dist/kafka/3.0.0/kafka_2.13-3.0.0.tgz
+    tar xzf kafka_2.13-3.0.0.tgz
+    mv kafka_2.13-3.0.0 ~
+    sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+    sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+
+Then followed with:
+    
+    ~/kafka_2.13-3.1.0/bin/zookeeper-server-start.sh ~/kafka_2.13-3.1.0/config/zookeeper.properties
+    ~/kafka_2.13-3.1.0/bin/kafka-server-start.sh ~/kafka_2.13-3.1.0/config/server.properties
+
+
+kafka-topics.sh --bootstrap-server localhost:9092 --list

@@ -1,0 +1,68 @@
+CREATE OR REPLACE STAGE MANAGE_DB.external_stages.aws_stage
+    url='s3://snowflake-assignments-mc/loadingdata'
+;
+
+
+COPY INTO EXERCISE_DB.PUBLIC.CUSTOMERS
+    FROM @aws_stage
+    file_format= (type = csv field_delimiter=';' skip_header=1)
+    pattern='.*customers.*';
+
+
+--------------------------------------------------------------------------------
+
+CREATE TABLE EXERCISE_DB.PUBLIC.CUSTOMER(
+ID INT,
+first_name varchar,
+last_name varchar,
+email varchar,
+age int,
+city varchar
+);
+
+CREATE OR REPLACE STAGE MANAGE_DB.external_stages.assignment
+    url='s3://snowflake-assignments-mc/fileformat'
+;
+
+CREATE OR REPLACE file format MANAGE_DB.file_formats.my_file_format
+    SKIP_HEADER = 1
+    field_delimiter = '|'
+;    
+
+
+COPY INTO EXERCISE_DB.PUBLIC.CUSTOMER
+    FROM  @MANAGE_DB.external_stages.assignment
+    file_format = (FORMAT_NAME= MANAGE_DB.file_formats.my_file_format)
+;
+
+--------------------------------------------------------------------------------
+Assignment 6
+
+CREATE OR REPLACE TABLE employees(
+  customer_id int,
+  first_name varchar(50),
+  last_name varchar(50),
+  email varchar(50),
+  age int,
+  department varchar(50)
+);  
+
+CREATE OR REPLACE STAGE MANAGE_DB.external_stages.assignment6
+    url='s3://snowflake-assignments-mc/copyoptions/example1'
+;
+
+CREATE OR REPLACE file format MANAGE_DB.file_formats.f_employees
+    SKIP_HEADER = 1
+    field_delimiter = ','
+;    
+
+COPY INTO COPY_DB.PUBLIC.employees
+    FROM @MANAGE_DB.external_stages.assignment6
+    file_format = (FORMAT_NAME= MANAGE_DB.file_formats.f_employees)
+    VALIDATION_MODE = RETURN_ERRORS;
+
+
+COPY INTO COPY_DB.PUBLIC.employees
+    FROM @MANAGE_DB.external_stages.assignment6
+    file_format = (FORMAT_NAME= MANAGE_DB.file_formats.f_employees)
+    ON_ERROR=CONTINUE;
