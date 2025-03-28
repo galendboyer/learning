@@ -1,0 +1,49 @@
+
+8. Core Components
+Web Server
+Scheduler
+Meta Database
+Triggerer       -> Manages tasks dependent on external events
+Executor        -> Determines how tasks will be run
+Queue           ->
+Worker          -> Processes that perform the tasks.
+
+
+9. Core Concepts
+
+DAG                -> Directed Acycli Graph
+
+Operator           -> Single, ideally idempotent. task in DAG
+                      Allow to break down workflow into discrete managable pieces of work
+                      ie (Break 5 eggs)
+                      
+                      List of Operators: https://registry.astronomer.io/providers
+
+Task/Task Instance -> Task is a specific instance of an operator.
+                      When operator is assigned to a DAG, it becomes a task.
+                      ie: (Break 5 eggs on July 1st at 2pm)
+                      
+Workflow           -> Entire process defined by DAG, including all tasks and their dependencies.
+                      DAG is basically a Workflow.
+
+10. Airflow is NOT!
+Data processing framework
+Realtime streaming solution
+Data storage system
+
+NOT GOOD AT:
+High-frequency, sub-minute scheduling.
+Processing large datasets directly, orchestrate them but not perform them.
+Real-Time data streaming.
+Simple, linear workflows with few dependencies, might be overkill.
+
+11. Architectures
+
+Single-Node: All components of Airflow are running on a single computer or server.
+
+Multi-Node:  Can add more workers
+             Reliability
+             Process more tasks simultaneously
+
+14. What is Docker
+Universal packaging system for software.
